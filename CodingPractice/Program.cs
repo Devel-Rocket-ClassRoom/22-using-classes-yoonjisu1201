@@ -150,8 +150,134 @@ class Player
         Console.WriteLine($"이름: {_name}, 체력: {_health}");
     }
 }
-*/
+
 
 //9.
+Stock stock = new Stock();
+stock.CurrentPrice = 30;
+Console.WriteLine($"주가: {stock.CurrentPrice}");
+class Stock
+{
+    private decimal _currentPrice;
 
-//class
+    public decimal CurrentPrice
+    {
+        get { return _currentPrice; }
+        set { _currentPrice = value; }
+    }
+
+}
+
+
+//10.
+Product product = new Product();
+product.Name = "노트북";
+product.Price = 1500000;
+Console.WriteLine($"{product.Name}: {product.Price}원 (수량: {product.Quantity})");
+class Product
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int Quantity { get; set; } = 1;
+}
+
+
+//11.
+Circle circle = new Circle();
+circle.Radius = 5;
+Console.WriteLine($"반지름: {circle.Radius}, 넓이: {circle.Area:F2}");
+class Circle
+{
+    public double Radius { get; set; }
+    public double Area => Math.PI * Radius * Radius;
+}
+
+
+//12.
+Monster monster1 = new Monster();
+monster1.Name = "고블린";
+monster1.Health = 50;
+
+Monster monster2 = new Monster
+{
+    Name = "오크",
+    Health = 100
+};
+
+monster1.Attack();
+monster2.Attack();
+class Monster
+{
+    public string Name;
+    public int Health;
+
+    public void Attack()
+    {
+        Console.WriteLine($"{Name}이(가) 공격합니다!");
+    }
+}
+
+
+//13.
+Character hero = new Character
+{
+    Name = "용사",
+    Level = 10,
+    Job = "전사"
+};
+
+Console.WriteLine($"{hero.Name} - Lv.{hero.Level} {hero.Job}");
+
+class Character
+{
+    public string Name { get; set; }
+    public int Level { get; set; }
+    public string Job { get; set; }
+}
+
+
+//14.
+Random random = new Random();
+
+Console.WriteLine($"임의의 정수: {random.Next()}");
+Console.WriteLine($"0 ~ 4: {random.Next(5)}");
+Console.WriteLine($"1 ~ 9: {random.Next(1, 10)}");
+Console.WriteLine($"0.0 ~ 1.0: {random.NextDouble():F4}");
+
+
+//15.
+Random random = new Random();
+
+Console.WriteLine("주사위를 5번 굴립니다:");
+for (int i = 0; i < 5; i++)
+{
+    int dice = random.Next(1, 7);
+    Console.WriteLine($"  {i + 1}번째: {dice}");
+}
+*/
+
+//16.
+Person alice = new Person("Alice", 25);
+Person bob = new Person("Bob", 30);
+alice.SetFriend(bob);
+class Person
+{
+    private string _name;
+    private int _age;
+
+    public Person(string name, int age)
+    {
+        this._name = name;
+        this._age = age;
+    }
+
+    public void SetFriend(Person friend)
+    {
+        friend.PrintFriendInfo(this);
+    }
+
+    public void PrintFriendInfo(Person person)
+    {
+        Console.WriteLine($"{_name}의 친구는 {person._name}입니다.");
+    }
+}
